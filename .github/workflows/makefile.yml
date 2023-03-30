@@ -7,16 +7,11 @@ on:
     branches: [ "master" ]
 
 jobs:
-
-  install-deps:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Install OpenSCAD
-      run: sudo apt update && sudo apt install openscad
-
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Install OpenSCAD
+      run: sudo apt update && sudo apt install openscad
     - name: Build
       run: make clean && make all
